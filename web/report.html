@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OP Consultation Report</title>
+  <link rel="icon" href="/static/assets/q-mark.png">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/report.css">
+</head>
+<body class="report-body">
+  <script src="/static/icons.js"></script>
+
+  <div class="rp-toolbar no-print">
+    <a class="btn btn-quiet" href="/"><svg class="i"><use href="#i-left"/></svg>HMIS</a>
+    <span class="spacer"></span>
+    <label class="toggle" title="Show patient instructions in Hindi under each medicine"><input type="checkbox" id="chkHi" checked> Hindi instructions</label>
+    <a class="btn btn-ghost" id="btnJson" href="#"><svg class="i"><use href="#i-download"/></svg>FHIR JSON</a>
+    <button class="btn btn-primary" id="btnPrint"><svg class="i"><use href="#i-file"/></svg>Print / Save as PDF</button>
+  </div>
+
+  <main class="paper" id="paper">
+    <div class="empty">Loading report…</div>
+  </main>
+
+  <p class="rp-hint no-print">Tip: in the print dialog choose <b>Save as PDF</b>, paper size <b>A4</b>, and turn on <b>Background graphics</b>.</p>
+
+  <script src="/static/report.js"></script>
+</body>
+</html>

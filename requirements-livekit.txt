@@ -1,0 +1,3 @@
+# Optional: LiveKit ambient capture (voice_agent/ambient_scribe.py)
+-r requirements.txt
+livekit-agents>=1.0

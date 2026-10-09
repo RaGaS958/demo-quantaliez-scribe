@@ -1,0 +1,143 @@
+{
+  "_note": "Synthetic demo data. Not real patients. ABHA, HPR and HFR identifiers are dummy values.",
+  "practitioner": {"id": "DR-001", "name": "Dr. Kavita Rao", "hpr_id": "71-0000-0000-0001", "qualification": "MBBS, MD (Medicine)"},
+  "facility": {"id": "FAC-001", "name": "Demo Urban PHC, Lucknow", "hfr_id": "IN0910000001"},
+  "patients": [
+    {"id": "P001", "name": "Sunita Devi", "gender": "female", "age": 38, "abha_number": "91-0000-0000-0001", "abha_address": "sunita.demo@sbx", "mrn": "OPD-2026-1012", "token": 12, "reason": "Fever, cough", "sample": "fever-cough"},
+    {"id": "P002", "name": "Ramesh Yadav", "gender": "male", "age": 56, "abha_number": "91-0000-0000-0002", "abha_address": "ramesh.demo@sbx", "mrn": "OPD-2026-1013", "token": 13, "reason": "Sugar, BP review", "sample": "diabetes-bp"},
+    {"id": "P003", "name": "Arjun Mehta", "gender": "male", "age": 27, "abha_number": "91-0000-0000-0003", "abha_address": "arjun.demo@sbx", "mrn": "OPD-2026-1014", "token": 14, "reason": "Sore throat", "sample": "dictation-throat"}
+  ],
+  "samples": [
+    {
+      "id": "fever-cough",
+      "title": "Fever and cough",
+      "subtitle": "Live conversation · Hindi + English",
+      "segments": [
+        {"speaker": "Doctor", "text": "Namaste, baithiye. Bataiye, kya pareshani hai?", "english": "Hello, please sit. Tell me, what is the problem?"},
+        {"speaker": "Patient", "text": "Doctor sahab, bukhar hai aur khansi bhi ho rahi hai.", "english": "Doctor, I have a fever and I have also been coughing."},
+        {"speaker": "Doctor", "text": "Kitne din se bukhar hai?", "english": "How many days have you had the fever?"},
+        {"speaker": "Patient", "text": "Teen din se. Saath mein khansi bhi hai, raat ko zyada hoti hai.", "english": "For three days. I also have a cough, it gets worse at night."},
+        {"speaker": "Doctor", "text": "Balgam aata hai? Saans lene mein koi takleef?", "english": "Do you bring up phlegm? Any difficulty breathing?"},
+        {"speaker": "Patient", "text": "Nahi, sookhi khansi hai. Saans theek hai.", "english": "No, it is a dry cough. Breathing is fine."},
+        {"speaker": "Doctor", "text": "Kisi dawai se allergy hai?", "english": "Are you allergic to any medicine?"},
+        {"speaker": "Patient", "text": "Nahi, koi allergy nahi hai.", "english": "No, I have no allergies."},
+        {"speaker": "Doctor", "text": "Temperature 101 hai, pulse 96. Chest clear hai.", "english": "Temperature is 101, pulse 96. Chest is clear."},
+        {"speaker": "Doctor", "text": "Paracetamol 650 lijiye, din mein teen baar, teen din tak, khaana khaane ke baad.", "english": "Take Paracetamol 650, three times a day for three days, after food."},
+        {"speaker": "Doctor", "text": "Paani zyada peejiye aur aaram kijiye. Agar bukhar teen din mein nahi utarta, toh CBC karwa ke dikhaiye.", "english": "Drink plenty of water and rest. If the fever does not come down in three days, get a CBC done and come back."},
+        {"speaker": "Patient", "text": "Theek hai doctor sahab, dhanyavaad.", "english": "Okay doctor, thank you."}
+      ],
+      "draft": {
+        "languages": "Hindi + English",
+        "capture_mode": "Live conversation",
+        "chief_complaints": [
+          {"text": "Fever", "duration": "3 days", "details": null},
+          {"text": "Dry cough", "duration": "3 days", "details": "Worse at night; no sputum; no breathing difficulty"}
+        ],
+        "history": [],
+        "allergies": [],
+        "no_known_allergies": true,
+        "vitals": {"temperature_f": 101, "pulse_bpm": 96},
+        "examination": ["Chest clear"],
+        "results": [],
+        "assessment": [{"text": "Acute febrile illness", "status": "provisional"}],
+        "medications": [
+          {"name": "Paracetamol", "strength": "650 mg", "form": "tablet", "route": "oral", "frequency_code": "TDS", "times_per_day": 3, "duration_days": 3, "timing": "After food", "prn": false, "instructions": null}
+        ],
+        "investigations": [{"text": "CBC", "condition": "If fever persists beyond 3 days"}],
+        "advice": ["Drink plenty of fluids", "Rest"],
+        "follow_up": {"in_days": 3, "text": "Review if fever persists, with CBC report"},
+        "summary": "Fever and dry cough for 3 days; temperature 101 °F, chest clear. Symptomatic treatment, CBC if fever persists.",
+        "needs_review": [
+          "Diagnosis was not stated by the doctor: 'Acute febrile illness' is a provisional draft",
+          "Temperature unit not spoken: assumed °F"
+        ]
+      }
+    },
+    {
+      "id": "diabetes-bp",
+      "title": "Diabetes and BP follow-up",
+      "subtitle": "Live conversation · Hinglish",
+      "segments": [
+        {"speaker": "Doctor", "text": "Ramesh ji, kaise hain? Sugar ki report laaye hain?", "english": "Ramesh ji, how are you? Did you bring the sugar report?"},
+        {"speaker": "Patient", "text": "Haan doctor, fasting 168 aaya hai. Dawai time pe le raha hoon.", "english": "Yes doctor, fasting came out 168. I am taking my medicine on time."},
+        {"speaker": "Doctor", "text": "Metformin 500 subah-shaam chal rahi hai na? Pet mein koi problem?", "english": "You are on Metformin 500 morning and evening, right? Any stomach problems?"},
+        {"speaker": "Patient", "text": "Haan, wahi le raha hoon. Pet theek hai. Bas kabhi kabhi sar mein dard rehta hai.", "english": "Yes, I am taking that. Stomach is fine. Just sometimes I get a headache."},
+        {"speaker": "Doctor", "text": "BP 152 by 96 hai, thoda high hai. Weight 82 kilo.", "english": "BP is 152 over 96, a bit high. Weight 82 kilos."},
+        {"speaker": "Doctor", "text": "Metformin 1000 kar dete hain, din mein do baar, khaane ke baad. Aur Amlodipine 5 mg roz subah ek goli.", "english": "Let us increase Metformin to 1000, twice a day after food. And Amlodipine 5 mg, one tablet every morning."},
+        {"speaker": "Doctor", "text": "HbA1c aur fasting sugar dobara karwaiye. Namak kam kijiye, roz aadha ghanta walk kijiye.", "english": "Get HbA1c and fasting sugar repeated. Reduce salt and walk half an hour every day."},
+        {"speaker": "Doctor", "text": "Ek mahine baad reports ke saath aaiye.", "english": "Come back after a month with the reports."},
+        {"speaker": "Patient", "text": "Ji, theek hai.", "english": "Yes, okay."}
+      ],
+      "draft": {
+        "languages": "Hindi + English",
+        "capture_mode": "Live conversation",
+        "chief_complaints": [
+          {"text": "Diabetes follow-up", "duration": null, "details": "Reports adherence to medicines"},
+          {"text": "Occasional headache", "duration": null, "details": null}
+        ],
+        "history": ["Diabetes on Metformin 500 mg twice daily"],
+        "allergies": [],
+        "no_known_allergies": false,
+        "vitals": {"bp_systolic": 152, "bp_diastolic": 96, "weight_kg": 82},
+        "examination": [],
+        "results": [{"text": "Fasting blood glucose", "value": "168", "unit": "mg/dL"}],
+        "assessment": [
+          {"text": "Diabetes mellitus, suboptimally controlled", "status": "provisional"},
+          {"text": "Raised blood pressure", "status": "provisional"}
+        ],
+        "medications": [
+          {"name": "Metformin", "strength": "1000 mg", "form": "tablet", "route": "oral", "frequency_code": "BD", "times_per_day": 2, "duration_days": null, "timing": "After food", "prn": false, "instructions": "Dose increased from 500 mg"},
+          {"name": "Amlodipine", "strength": "5 mg", "form": "tablet", "route": "oral", "frequency_code": "OD", "times_per_day": 1, "duration_days": null, "timing": "In the morning", "prn": false, "instructions": null}
+        ],
+        "investigations": [
+          {"text": "HbA1c", "condition": null},
+          {"text": "Fasting blood glucose", "condition": null}
+        ],
+        "advice": ["Reduce salt intake", "Walk 30 minutes daily"],
+        "follow_up": {"in_days": 30, "text": "Review after 1 month with reports"},
+        "summary": "Diabetes follow-up: fasting glucose 168 mg/dL, BP 152/96 mmHg. Metformin increased to 1000 mg BD, Amlodipine 5 mg OD started. HbA1c and FBS advised; review in 1 month.",
+        "needs_review": [
+          "Type of diabetes not stated",
+          "No duration given for Metformin or Amlodipine: treated as ongoing",
+          "Allergy status not discussed"
+        ]
+      }
+    },
+    {
+      "id": "dictation-throat",
+      "title": "Sore throat (doctor dictation)",
+      "subtitle": "Dictation after the visit · English",
+      "segments": [
+        {"speaker": "Doctor", "text": "Dictation for Arjun Mehta, twenty-seven year old male.", "english": null},
+        {"speaker": "Doctor", "text": "Complains of sore throat and mild fever for two days, with pain on swallowing. No cough.", "english": null},
+        {"speaker": "Doctor", "text": "On examination, temperature 100.4, SpO2 98 percent. Throat congested, tonsils enlarged without exudate.", "english": null},
+        {"speaker": "Doctor", "text": "Impression: acute pharyngitis.", "english": null},
+        {"speaker": "Doctor", "text": "Tablet Paracetamol 500 mg SOS for fever, maximum three tablets a day. Warm saline gargles three times a day.", "english": null},
+        {"speaker": "Doctor", "text": "Review after three days if not better. End of dictation.", "english": null}
+      ],
+      "draft": {
+        "languages": "English",
+        "capture_mode": "Dictation",
+        "chief_complaints": [
+          {"text": "Sore throat", "duration": "2 days", "details": "Pain on swallowing; no cough"},
+          {"text": "Mild fever", "duration": "2 days", "details": null}
+        ],
+        "history": [],
+        "allergies": [],
+        "no_known_allergies": false,
+        "vitals": {"temperature_f": 100.4, "spo2_pct": 98},
+        "examination": ["Throat congested", "Tonsils enlarged, no exudate"],
+        "results": [],
+        "assessment": [{"text": "Acute pharyngitis", "status": "provisional"}],
+        "medications": [
+          {"name": "Paracetamol", "strength": "500 mg", "form": "tablet", "route": "oral", "frequency_code": "SOS", "times_per_day": null, "duration_days": null, "timing": null, "prn": true, "instructions": "For fever; maximum 3 tablets a day"}
+        ],
+        "investigations": [],
+        "advice": ["Warm saline gargles three times a day"],
+        "follow_up": {"in_days": 3, "text": "Review after 3 days if not better"},
+        "summary": "Sore throat and mild fever for 2 days; temperature 100.4 °F, throat congested, tonsils enlarged without exudate. Impression acute pharyngitis; symptomatic care.",
+        "needs_review": ["Allergy status not dictated"]
+      }
+    }
+  ]
+}

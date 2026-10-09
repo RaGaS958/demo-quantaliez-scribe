@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo HMIS · OPD queue</title>
+  <link rel="icon" href="/static/assets/q-mark.png">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <script src="/static/icons.js"></script>
+
+  <header class="hmis-bar">
+    <div class="logo"><span class="box">H</span>Demo HMIS</div>
+    <div class="meta" id="facility">…</div>
+    <div class="spacer"></div>
+    <div class="meta">Stand-in for the facility's existing ABDM-enabled HMIS</div>
+  </header>
+
+  <div class="hmis-wrap">
+    <div class="eyebrow">In the clinic</div>
+    <h1>OPD queue</h1>
+    <p class="muted" style="margin:0">Open a patient and launch Quantaliez Voice Scribe. The approved OP Consult Record comes back here.</p>
+
+    <div class="journey" aria-label="Consultation journey">
+      <span>01 Open patient</span><i>→</i>
+      <span>02 Launch Voice Scribe</span><i>→</i>
+      <span class="t">03–05 Scribe listens, transcribes, drafts FHIR</span><i>→</i>
+      <span class="o">06 Doctor reviews and approves</span><i>→</i>
+      <span>07 Saved in HMIS, shared via ABDM</span>
+    </div>
+
+    <div class="grid2">
+      <section class="panel">
+        <div class="ph">
+          <h2>Today's patients</h2><span class="small muted" id="mode"></span>
+          <button class="btn btn-primary small" id="btnAddPatient"><svg class="i"><use href="#i-plus"/></svg>Register patient</button>
+        </div>
+        <form class="reg hidden" id="regForm" autocomplete="off">
+          <div class="reg-grid">
+            <label class="span2">Full name *<input id="rName" required maxlength="120" placeholder="e.g. Mohd Nadeem"></label>
+            <label>Age<input id="rAge" type="number" min="0" max="130" placeholder="years"></label>
+            <label>Gender<select id="rGender"><option value="male">Male</option><option value="female">Female</option><option value="other">Other</option><option value="unknown" selected>Not stated</option></select></label>
+            <label class="span2">Reason for visit<input id="rReason" placeholder="e.g. fever and cough"></label>
+            <label>Mobile<input id="rMobile" inputmode="tel" placeholder="optional"></label>
+            <label>ABHA number<input id="rAbha" placeholder="optional, 14 digits"></label>
+            <label class="span2">ABHA address<input id="rAbhaAddr" placeholder="optional, name@abdm"></label>
+          </div>
+          <div class="reg-actions"><span class="small" id="regErr" style="color:var(--red)"></span><span class="spacer"></span>
+            <button type="button" class="btn btn-quiet" id="rCancel">Cancel</button>
+            <button type="submit" class="btn btn-primary">Register and add to queue</button></div>
+        </form>
+        <table class="q">
+          <thead><tr><th>Token</th><th>Patient</th><th class="hide-s">ABHA</th><th class="hide-s">Reason</th><th>Status</th><th></th></tr></thead>
+          <tbody id="queue"></tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <div class="ph">
+          <h2>Records returned by Voice Scribe</h2>
+          <button class="btn btn-quiet small" id="btnReset" title="Delete demo records and audit log">Reset demo</button>
+        </div>
+        <div id="records"></div>
+      </section>
+    </div>
+    <p class="footnote" style="margin:16px 0 0">Patients tagged "demo" are synthetic, with dummy ABHA, HPR and HFR numbers. Patients you register are stored only on this computer (runtime/patients.json).</p>
+  </div>
+
+  <div id="modalRoot"></div>
+  <script src="/static/hmis.js"></script>
+</body>
+</html>

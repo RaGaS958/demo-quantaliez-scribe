@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo HMIS · OPD queue</title>
+  <link rel="icon" href="/static/assets/q-mark.png">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body><div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg"><symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="11.5" rx="3"></rect><path d="M5 10.5a7 7 0 0 0 14 0"></path><path d="M12 17.5v3.5"></path><path d="M8.5 21h7"></path></symbol><symbol id="i-lang" viewBox="0 0 24 24"><path d="M4 5h7"></path><path d="M9 3v2c0 4.4-2.2 8-5 8"></path><path d="M5 9c0 2.1 3 3.9 6.7 4"></path><path d="M12 20l4-9 4 9"></path><path d="M19.1 18h-6.2"></path></symbol><symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 4H5a2 2 0 0 0-2 2v3.5a5.5 5.5 0 0 0 11 0V6a2 2 0 0 0-2-2h-1"></path><path d="M8.5 15a6 6 0 0 0 11.5 0v-3"></path><path d="M11 3v2"></path><path d="M6 3v2"></path><circle cx="20" cy="10" r="2"></circle></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"></path><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"></path><path d="M10 12.5l-1.5 2 1.5 2"></path><path d="M14 12.5l1.5 2-1.5 2"></path></symbol><symbol id="i-usercheck" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"></circle><path d="M3 21v-2a4 4 0 0 1 4-4h4"></path><path d="M15 19l2 2 4-4"></path></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3a12 12 0 0 0 8.5 3A12 12 0 0 1 12 21 12 12 0 0 1 3.5 6 12 12 0 0 0 12 3"></path><circle cx="12" cy="11" r="1"></circle><path d="M12 12v2.5"></path></symbol><symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 12h2.5l2-5 3 10 3-14 3 12 2-3H21"></path></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20h4L18.5 9.5a2.83 2.83 0 0 0-4-4L4 16v4"></path><path d="M13.5 6.5l4 4"></path></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path><path d="M7 9l5-5 5 5"></path><path d="M12 4v12"></path></symbol><symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"></path></symbol><symbol id="i-broadcast" viewBox="0 0 24 24"><path d="M18.36 19.36a9 9 0 1 0-12.72 0"></path><path d="M15.54 16.54a5 5 0 1 0-7.08 0"></path><circle cx="12" cy="13" r="1"></circle></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M10.24 3.96 2.4 17.06A2 2 0 0 0 4.11 20h15.78a2 2 0 0 0 1.71-2.94L13.76 3.96a2 2 0 0 0-3.52 0z"></path></symbol><symbol id="i-history" viewBox="0 0 24 24"><path d="M12 8v4l2 2"></path><path d="M3.05 11a9 9 0 1 1 .5 4"></path><path d="M3 20v-5h5"></path></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path><path d="M7 11l5 5 5-5"></path><path d="M12 4v12"></path></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></symbol><symbol id="i-left" viewBox="0 0 24 24"><path d="M5 12h14M5 12l6 6M5 12l6-6"></path></symbol><symbol id="i-skip" viewBox="0 0 24 24"><path d="M4 5v14l8-7z"></path><path d="M12 5v14l8-7z"></path></symbol><symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"></rect></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol><symbol id="i-exchange" viewBox="0 0 24 24"><path d="M7 10h14l-4-4"></path><path d="M17 14H3l4 4"></path></symbol><symbol id="i-id" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="9" cy="10" r="2"></circle><path d="M15 8h2M15 12h2M7 16h10"></path></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"></rect><circle cx="12" cy="16" r="1"></circle><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M11 12h1v4h1"></path></symbol></svg></div>
+  <script src="/static/icons.js"></script>
+
+  <header class="hmis-bar">
+    <div class="logo"><span class="box">H</span>Demo HMIS</div>
+    <div class="meta" id="facility">[Clinic / Organisation name] · OPD · [Dr. Full Name]</div>
+    <div class="spacer"></div>
+    <div class="meta">Stand-in for the facility's existing ABDM-enabled HMIS</div>
+  </header>
+
+  <div class="hmis-wrap">
+    <div class="eyebrow">In the clinic</div>
+    <h1>OPD queue</h1>
+    <p class="muted" style="margin:0">Open a patient and launch Quantaliez Voice Scribe. The approved OP Consult Record comes back here.</p>
+
+    <div class="journey" aria-label="Consultation journey">
+      <span>01 Open patient</span><i>→</i>
+      <span>02 Launch Voice Scribe</span><i>→</i>
+      <span class="t">03–05 Scribe listens, transcribes, drafts FHIR</span><i>→</i>
+      <span class="o">06 Doctor reviews and approves</span><i>→</i>
+      <span>07 Saved in HMIS, shared via ABDM</span>
+    </div>
+
+    <div class="grid2">
+      <section class="panel">
+        <div class="ph">
+          <h2>Today's patients</h2><span class="small muted" id="mode">Scribe: live AI (real voice)</span>
+          <button class="btn btn-primary small" id="btnAddPatient"><svg class="i"><use href="#i-plus"></use></svg>Register patient</button>
+        </div>
+        <form class="reg hidden" id="regForm" autocomplete="off">
+          <div class="reg-grid">
+            <label class="span2">Full name *<input id="rName" required="" maxlength="120" placeholder="e.g. Mohd Nadeem"></label>
+            <label>Age<input id="rAge" type="number" min="0" max="130" placeholder="years"></label>
+            <label>Gender<select id="rGender"><option value="male">Male</option><option value="female">Female</option><option value="other">Other</option><option value="unknown" selected="">Not stated</option></select></label>
+            <label class="span2">Reason for visit<input id="rReason" placeholder="e.g. fever and cough"></label>
+            <label>Mobile<input id="rMobile" inputmode="tel" placeholder="optional"></label>
+            <label>ABHA number<input id="rAbha" placeholder="optional, 14 digits"></label>
+            <label class="span2">ABHA address<input id="rAbhaAddr" placeholder="optional, name@abdm"></label>
+          </div>
+          <div class="reg-actions"><span class="small" id="regErr" style="color:var(--red)"></span><span class="spacer"></span>
+            <button type="button" class="btn btn-quiet" id="rCancel">Cancel</button>
+            <button type="submit" class="btn btn-primary">Register and add to queue</button></div>
+        </form>
+        <table class="q">
+          <thead><tr><th>Token</th><th>Patient</th><th class="hide-s">ABHA</th><th class="hide-s">Reason</th><th>Status</th><th></th></tr></thead>
+          <tbody id="queue"><tr class="row-new">
+        <td class="tok">#18</td>
+        <td class="nw"><b>Test Patient</b><div class="small muted">M · 30 y · UHID-2026-0004</div></td>
+        <td class="hide-s nw"><div class="abha"></div><div class="abha">ABHA not linked</div></td>
+        <td class="hide-s">Fever and cough</td>
+        <td><span class="status-chip">Waiting</span></td>
+        <td class="nw"><a class="btn btn-primary" href="/scribe?patient=R261009-8531" style="text-decoration: none;"><svg class="i"><use href="#i-mic"></use></svg>Launch Voice Scribe</a><button class="btn btn-quiet x-del" data-del="R261009-8531" title="Remove this patient"><svg class="i"><use href="#i-x"></use></svg></button></td>
+      </tr><tr class="">
+        <td class="tok">#17</td>
+        <td class="nw"><b>Test Patient</b><div class="small muted">M · 30 y · UHID-2026-0003</div></td>
+        <td class="hide-s nw"><div class="abha"></div><div class="abha">ABHA not linked</div></td>
+        <td class="hide-s">Fever and cough</td>
+        <td><span class="status-chip">Waiting</span></td>
+        <td class="nw"><a class="btn btn-primary" href="/scribe?patient=R261009-76A9" style="text-decoration: none;"><svg class="i"><use href="#i-mic"></use></svg>Launch Voice Scribe</a><button class="btn btn-quiet x-del" data-del="R261009-76A9" title="Remove this patient"><svg class="i"><use href="#i-x"></use></svg></button></td>
+      </tr><tr class="">
+        <td class="tok">#16</td>
+        <td class="nw"><b>Test Patient</b><div class="small muted">M · 30 y · UHID-2026-0002</div></td>
+        <td class="hide-s nw"><div class="abha"></div><div class="abha">ABHA not linked</div></td>
+        <td class="hide-s">Fever and cough</td>
+        <td><span class="status-chip">Waiting</span></td>
+        <td class="nw"><a class="btn btn-primary" href="/scribe?patient=R261009-A62C" style="text-decoration: none;"><svg class="i"><use href="#i-mic"></use></svg>Launch Voice Scribe</a><button class="btn btn-quiet x-del" data-del="R261009-A62C" title="Remove this patient"><svg class="i"><use href="#i-x"></use></svg></button></td>
+      </tr><tr class="">
+        <td class="tok">#15</td>
+        <td class="nw"><b>Test Patient</b><div class="small muted">M · 30 y · UHID-2026-0001</div></td>
+        <td class="hide-s nw"><div class="abha"></div><div class="abha">ABHA not linked</div></td>
+        <td class="hide-s">Fever and cough</td>
+        <td><span class="status-chip">Waiting</span></td>
+        <td class="nw"><a class="btn btn-primary" href="/scribe?patient=R261009-F1B5" style="text-decoration: none;"><svg class="i"><use href="#i-mic"></use></svg>Launch Voice Scribe</a><button class="btn btn-quiet x-del" data-del="R261009-F1B5" title="Remove this patient"><svg class="i"><use href="#i-x"></use></svg></button></td>
+      </tr><tr class="">
+        <td class="tok">#12</td>
+        <td class="nw"><b>Sunita Devi</b><span class="tag-demo" title="Synthetic demo patient">demo</span><div class="small muted">F · 38 y · OPD-2026-1012</div></td>
+        <td class="hide-s nw"><div class="abha">sunita.demo@sbx</div><div class="abha">91-0000-0000-0001</div></td>
+        <td class="hide-s">Fever, cough</td>
+        <td><span class="status-chip">Waiting</span></td>
+        <td class="nw"><a class="btn btn-primary" href="/scribe?patient=P001" style="text-decoration: none;"><svg class="i"><use href="#i-mic"></use></svg>Launch Voice Scribe</a></td>
+      </tr><tr class="">
+        <td class="tok">#13</td>
+        <td class="nw"><b>Ramesh Yadav</b><span class="tag-demo" title="Synthetic demo patient">demo</span><div class="small muted">M · 56 y · OPD-2026-1013</div></td>
+        <td class="hide-s nw"><div class="abha">ramesh.demo@sbx</div><div class="abha">91-0000-0000-0002</div></td>
+        <td class="hide-s">Sugar, BP review</td>
+        <td><span class="status-chip">Waiting</span></td>
+        <td class="nw"><a class="btn btn-primary" href="/scribe?patient=P002" style="text-decoration: none;"><svg class="i"><use href="#i-mic"></use></svg>Launch Voice Scribe</a></td>
+      </tr><tr class="">
+        <td class="tok">#14</td>
+        <td class="nw"><b>Arjun Mehta</b><span class="tag-demo" title="Synthetic demo patient">demo</span><div class="small muted">M · 27 y · OPD-2026-1014</div></td>
+        <td class="hide-s nw"><div class="abha">arjun.demo@sbx</div><div class="abha">91-0000-0000-0003</div></td>
+        <td class="hide-s">Sore throat</td>
+        <td><span class="status-chip">Waiting</span></td>
+        <td class="nw"><a class="btn btn-primary" href="/scribe?patient=P003" style="text-decoration: none;"><svg class="i"><use href="#i-mic"></use></svg>Launch Voice Scribe</a></td>
+      </tr></tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <div class="ph">
+          <h2>Records returned by Voice Scribe</h2>
+          <button class="btn btn-quiet small" id="btnReset" title="Delete demo records and audit log">Reset demo</button>
+        </div>
+        <div id="records"><div class="empty"><svg class="i"><use href="#i-file"></use></svg>No records yet. Launch Voice Scribe for a patient, then approve the draft.</div></div>
+      </section>
+    </div>
+    <p class="footnote" style="margin:16px 0 0">Patients tagged "demo" are synthetic, with dummy ABHA, HPR and HFR numbers. Patients you register are stored only on this computer (runtime/patients.json).</p>
+  </div>
+
+  <div id="modalRoot"></div>
+  <script src="/static/hmis.js"></script>
+
+
+</body></html>

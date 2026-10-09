@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voice Scribe · Quantaliez</title>
+  <link rel="icon" href="/static/assets/q-mark.png">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <script src="/static/icons.js"></script>
+
+  <header class="topbar">
+    <a class="brand" href="/" title="Back to HMIS">
+      <img src="/static/assets/q-mark.png" alt="">
+      <div>
+        <div class="name">Quantaliez Voice Scribe</div>
+        <div class="sub">Ambient AI scribe for ABDM</div>
+      </div>
+    </a>
+    <div class="ctx" id="ctx"><span class="muted">Loading patient context…</span></div>
+    <div class="spacer"></div>
+    <div class="mode" id="mode"><span class="dot"></span><span class="lbl">…</span></div>
+    <button class="btn btn-quiet" id="btnAudit"><svg class="i"><use href="#i-history"/></svg>Audit trail</button>
+  </header>
+
+  <section class="pipeline" aria-label="Pipeline">
+    <div class="tag"><svg class="i"><use href="#i-shield"/></svg>Inside NHA-approved infrastructure</div>
+    <div class="steps">
+      <div class="step" data-step="capture">
+        <div class="circle"><svg class="i"><use href="#i-mic"/></svg></div>
+        <div class="txt"><div class="t1">1&nbsp; Capture</div><div class="t2">the conversation</div></div>
+      </div>
+      <div class="step" data-step="transcribe">
+        <div class="circle"><svg class="i"><use href="#i-lang"/></svg></div>
+        <div class="txt"><div class="t1">2&nbsp; Transcribe</div><div class="t2">in many languages</div></div>
+      </div>
+      <div class="step" data-step="understand">
+        <div class="circle"><svg class="i"><use href="#i-steth"/></svg></div>
+        <div class="txt"><div class="t1">3&nbsp; Understand</div><div class="t2">the medical meaning</div></div>
+      </div>
+      <div class="step" data-step="build">
+        <div class="circle"><svg class="i"><use href="#i-file"/></svg></div>
+        <div class="txt"><div class="t1">4&nbsp; Build</div><div class="t2">the ABDM FHIR record</div></div>
+      </div>
+      <div class="step approve" data-step="approve">
+        <div class="circle"><svg class="i"><use href="#i-usercheck"/></svg></div>
+        <div class="txt"><div class="t1">5&nbsp; Clinician</div><div class="t2">reviews and approves</div></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="workspace">
+    <div class="ws-head">
+      <svg class="i wave-ic"><use href="#i-wave"/></svg>
+      Voice Scribe <span class="dotsep">·</span> OPD consultation <span class="dotsep">·</span>
+      <span id="sessionId" class="muted small">…</span>
+      <span class="pill" id="statusPill">Ready</span>
+    </div>
+
+    <div class="cols">
+      <section class="col">
+        <div class="col-head">
+          <div class="eyebrow" id="trLabel">Transcript</div>
+          <label class="toggle" title="Show English translation under each turn"><input type="checkbox" id="chkEn" checked> English</label>
+        </div>
+        <div class="col-body" id="trBody">
+          <div class="capture" id="capture">
+            <div class="seg" id="sources">
+              <button data-src="sample" class="on"><svg class="i"><use href="#i-play"/></svg>Sample</button>
+              <button data-src="mic"><svg class="i"><use href="#i-mic"/></svg>Microphone</button>
+              <button data-src="upload"><svg class="i"><use href="#i-upload"/></svg>Upload</button>
+              <button data-src="livekit"><svg class="i"><use href="#i-broadcast"/></svg>LiveKit</button>
+            </div>
+            <div class="opts" id="opts"></div>
+            <div class="wave-wrap"><canvas class="wave" id="wave"></canvas></div>
+            <div class="row" style="margin-top:10px">
+              <button class="btn btn-primary btn-lg" id="btnStart" style="flex:1">Start consultation</button>
+              <button class="btn btn-ghost btn-lg hidden" id="btnSkip" title="Fast-forward the sample"><svg class="i"><use href="#i-skip"/></svg></button>
+            </div>
+          </div>
+          <div id="captured" class="small muted hidden" style="margin:-2px 0 6px"></div>
+          <div id="transcript"></div>
+          <div class="typed hidden" id="typed">
+            <input id="typedInput" placeholder="Type a line if the mic is unavailable…" autocomplete="off">
+            <button class="btn btn-ghost" id="typedAdd">Add</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="col">
+        <div class="col-head">
+          <div class="eyebrow">Output 1 · Human-readable note</div>
+          <span class="saving" id="saving"></span>
+        </div>
+        <div class="col-body" id="note"></div>
+      </section>
+
+      <section class="col">
+        <div class="col-head">
+          <div class="eyebrow">Output 2 · ABDM FHIR bundle</div>
+          <div class="fhir-tools">
+            <button class="btn btn-quiet small" id="btnRaw" disabled>Raw JSON</button>
+            <button class="btn btn-quiet" id="btnDl" title="Download bundle (.json)" disabled><svg class="i"><use href="#i-download"/></svg></button>
+          </div>
+        </div>
+        <div class="col-body" id="fhir"></div>
+      </section>
+    </div>
+
+    <div class="ws-foot">
+      <div class="hint"><svg class="i"><use href="#i-pencil"/></svg>Every field is editable before approval</div>
+      <div class="spacer"></div>
+      <button class="btn btn-ghost btn-lg" id="btnEdit" disabled>Edit</button>
+      <button class="btn btn-primary btn-lg" id="btnApprove" disabled>Approve and save to HMIS</button>
+    </div>
+  </main>
+
+  <p class="footnote">Demo with synthetic patients: not real patient data and not for clinical use. Terminology codes and the structural FHIR check are illustrative; production validates against the NRCeS ABDM FHIR IG with the official validator.</p>
+
+  <aside class="drawer" id="drawer" aria-label="Audit trail">
+    <div class="dh">
+      <svg class="i"><use href="#i-history"/></svg>
+      <h3>Audit trail</h3>
+      <button class="btn btn-quiet" id="btnCloseDrawer" title="Close"><svg class="i"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="db">
+      <p class="small muted" style="margin:4px 0 6px">Who accessed what, every transcription, every edit, every approval.</p>
+      <div id="auditList"></div>
+    </div>
+  </aside>
+  <div id="modalRoot"></div>
+
+  <script src="/static/scribe.js"></script>
+</body>
+</html>

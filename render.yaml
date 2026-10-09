@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: quantaliez-voice-scribe
+    env: python
+    repo: https://github.com/RaGaS958/demo-quantaliez-scribe.git
+    buildCommand: pip install -r requirements.txt && pip install -r requirements-livekit.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+      - key: SCRIBE_SERVER_URL
+        value: http://127.0.0.1:10000
+      - key: GROQ_API_KEY
+        sync: false
+      - key: LIVEKIT_URL
+        sync: false
+      - key: LIVEKIT_API_KEY
+        sync: false
+      - key: LIVEKIT_API_SECRET
+        sync: false
+      - key: DOCTOR_NAME
+        sync: false
+      - key: DOCTOR_QUALIFICATION
+        sync: false
+      - key: DOCTOR_REGISTRATION
+        sync: false
+      - key: FACILITY_NAME
+        sync: false
+      - key: FACILITY_ADDRESS
+        sync: false
+      - key: FACILITY_PHONE
+        sync: false
